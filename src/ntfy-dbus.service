@@ -1,0 +1,13 @@
+[Unit]
+Description=Ntfy daemon with D-Bus integration
+ConditionFileNotEmpty=%h/.config/ntfy-dbus/config
+
+[Service]
+EnvironmentFile=%h/.config/ntfy-dbus/config
+ExecStart=/usr/bin/python3 %h/.local/bin/ntfy_dbus.py
+Restart=always
+RestartSec=500ms
+TimeoutStopSec=2
+
+[Install]
+WantedBy=default.target

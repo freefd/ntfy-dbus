@@ -1,0 +1,10 @@
+[Unit]
+Description=Ntfy daemon with D-Bus integration
+
+[Timer]
+OnStartupSec=10s
+OnUnitActiveSec=1m
+AccuracySec=1m
+
+[Install]
+WantedBy=timers.target
