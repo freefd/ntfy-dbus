@@ -47,7 +47,8 @@ def get_args(show_usage: bool = False) -> argparse.Namespace:
         description="Ntfy messages to D-Bus org.freedesktop.Notifications"
     )
     args_parser.add_argument('--topic', '-t',
-                             help='Ntfy Topic. Default: none\n\n',
+                             help='Ntfy Topic. Environment variable name: '
+                                        'NTFY_DBUS_TOPIC. Default: none\n\n',
                              required=False,
                              type=min_string_length(1),
                              default=env_variable_check(
@@ -57,7 +58,9 @@ def get_args(show_usage: bool = False) -> argparse.Namespace:
                                 )
                              )
     args_parser.add_argument('--server', '-s',
-                             help='Ntfy server. Default: ntfy.sh\n\n',
+                             help='Ntfy server. MUST NOT CONTAIN a URL scheme '
+                                    'prefix! Environment variable name: '
+                                    'NTFY_DBUS_SERVER. Default: ntfy.sh\n\n',
                              required=False,
                              type=min_string_length(2),
                              default=env_variable_check(
@@ -67,8 +70,9 @@ def get_args(show_usage: bool = False) -> argparse.Namespace:
                                 )
                              )
     args_parser.add_argument('--token', '-b',
-                             help='Ntfy access token for Bearer Token'
-                                    'Authentication. Default: None\n\n',
+                             help='Ntfy access token for Bearer Token '
+                                    'Authentication. Environment variable name'
+                                    ': NTFY_DBUS_TOKEN. Default: None\n\n',
                              required=False,
                              type=min_string_length(32),
                              default=env_variable_check(
@@ -77,8 +81,9 @@ def get_args(show_usage: bool = False) -> argparse.Namespace:
                                 )
                              )
     args_parser.add_argument('--username', '-u',
-                             help='Ntfy access username for Basic'
-                                    'Authentication. Default: None\n\n',
+                             help='Ntfy access username for Basic '
+                                    'Authentication. Environment variable name'
+                                    ': NTFY_DBUS_USERNAME. Default: None\n\n',
                              required=False,
                              type=min_string_length(1),
                              default=env_variable_check(
@@ -87,8 +92,9 @@ def get_args(show_usage: bool = False) -> argparse.Namespace:
                                 )
                              )
     args_parser.add_argument('--password', '-p',
-                             help='Ntfy access password for Basic'
-                                    'Authentication. Default: None\n\n',
+                             help='Ntfy access password for Basic '
+                                    'Authentication. Environment variable name'
+                                    ': NTFY_DBUS_PASSWORD. Default: None\n\n',
                              required=False,
                              type=min_string_length(1),
                              default=env_variable_check(
@@ -97,7 +103,8 @@ def get_args(show_usage: bool = False) -> argparse.Namespace:
                                 )
                              )
     args_parser.add_argument('--loglevel', '-l',
-                             help='Logging level. Default: INFO\n\n',
+                             help='Logging level. Environment variable name: '
+                                    'NTFY_DBUS_LOGLEVEL. Default: INFO\n\n',
                              required=False,
                              type=str,
                              choices=[
@@ -111,7 +118,8 @@ def get_args(show_usage: bool = False) -> argparse.Namespace:
                              )
     args_parser.add_argument('--appendurl', '-a',
                              help='Append server URL in front of message. '
-                                    'Default: False\n\n',
+                                    'Environment variable name: '
+                                    'NTFY_DBUS_APPEND_URL. Default: False\n\n',
                              required=False,
                              choices=['yes','no',1,0,True,False],
                              type=str_to_bool(),
